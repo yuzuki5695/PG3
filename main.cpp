@@ -1,40 +1,29 @@
 #include<stdio.h>
 #include<Windows.h>
 
-int Recursive(int n,int a) {
 
-	if (n == 0) {
+int Recursive(int n, int a) {
+
+	if (a <= 0) {
 		return (0);
 	}
 
-	return (a + Recursive(n - 1,a));
-}
-
-int Recursive2(int n) {
-
-	if (n <= 1) {
-		return (100);
-	}
-
-	return ( (n * 2 - 50 ) + Recursive2(n - 1));
+	return ( n +  Recursive(n * 2 - 50 ,a - 1));
 }
 
 
 int main() {
 
-	int n = 1027;
-	int a = 1;
-	int n2 = 100;
-	int a2 = 1;
-	int result;
-	int result2;
+	int a = 1027;
+	a *= 5;
+	int b = 100;
+	int time = 5;
 
-	result = Recursive(n,a);
-	result2 = Recursive2(n2);
-	
-	printf("時給%d円で%d時間働いたら%d円になった\n", n, a, result);
-
-	printf("時給%d円で%d時間働いたら%d円になった\n", n2, a2, result2);
+	int result = Recursive(b, time);
+	printf("一般的な貸金体系\n");
+	printf("時給%d円で%d時間働いた場合 = %d円になった\n", 1027, 5,a);
+	printf("再帰的な貸金体系\n");
+	printf("時給%d円で%d時間働いた場合 = %d円になった\n", b, time, result);
 
 	return (0);
 }
