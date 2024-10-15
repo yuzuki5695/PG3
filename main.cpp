@@ -3,7 +3,6 @@
 #include<stdlib.h>
 #include<functional>
 
-
 // コールバック関数を呼び出す
 void setTimeout(std::function<void()> fx, int seconds) {
 	Sleep(seconds * 1000);
@@ -38,8 +37,6 @@ int main(int argc, const char* argv[]) {
 	} else {
 		printf("---不正解---\n");
 	}
-
-
 
 	return (0);
 }
