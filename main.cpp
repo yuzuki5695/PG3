@@ -1,40 +1,45 @@
 #include<stdio.h>
 #include<Windows.h>
 #include<stdlib.h>
+#include<functional>
 
-// コールバック関数
-void DispResult(int* s) {
-	printf("サイコロの出目は%d\n",*s);
-}
-
-typedef void (*PFunc)(int*);
 
 // コールバック関数を呼び出す
-void setTimeout(PFunc p, int number, int second) {
-	Sleep(second * 1000);
-	p(&number);
+void setTimeout(std::function<void()> fx, int seconds) {
+	Sleep(seconds * 1000);
+	fx();
 }
 
-
-int main(void) {
-	printf("サイコロを振ります\n");
-	printf("1~6の奇数か偶数を入力してください。\n");
-
-	int number = 0;
-	scanf_s("%dが入力されました", &number);
-	int dice = rand() % 6 + 1;
-	
+int main(int argc, const char* argv[]) {
+	int num;
+	int Dice;
 	int time = 3;
-	printf("%d秒お待ちください\n",time);
-	// コールバック関数の生成
-	PFunc p;
-	p = DispResult;
-	setTimeout(p, dice,time);
-	// 奇数・偶数の判定
-	if ((number % 2) == (dice % 2)) {
-		printf("正解\n");
+
+	// 入力受付関数
+	std::function<void()> fx = [&num]() {
+		[]() {printf("サイコロを振ります\n"); }();
+		[]() {printf("1~6のうち奇数か偶数を入力してください\n"); }();
+		scanf_s("%d", &num);
+	};
+	fx();
+
+	printf("%dが入力されました。%d秒お待ちください\n", num,time);
+	
+	// サイコロを振る関数
+	std::function<void()> rollDice = [&Dice]() {
+		Dice = std::rand() % 6 + 1;
+	};
+	setTimeout(rollDice, 3);
+	printf("出目は%dです\n", Dice);
+
+	// 判定
+	if ((num % 2) == (Dice % 2)) {
+		printf("---正解---\n");
 	} else {
-		printf("不正解\n");
-	}	
+		printf("---不正解---\n");
+	}
+
+
+
 	return (0);
 }
