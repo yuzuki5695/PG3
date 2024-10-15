@@ -22,16 +22,16 @@ int main(void) {
 
 	int number = 0;
 	scanf_s("%dが入力されました", &number);
-	int num = rand() % 6 + 1;
+	int dice = rand() % 6 + 1;
 	
 	int time = 3;
 	printf("%d秒お待ちください\n",time);
 	// コールバック関数の生成
 	PFunc p;
 	p = DispResult;
-	setTimeout(p, num,time);
+	setTimeout(p, dice,time);
 	// 奇数・偶数の判定
-	if ((number % 2) == (num % 2)) {
+	if ((number % 2) == (dice % 2)) {
 		printf("正解\n");
 	} else {
 		printf("不正解\n");
