@@ -12,9 +12,9 @@ public:
 	// コントラクタ
 	MyClass(T1 a,T2 b) : A(a),B(b){}
 
-	T1 Size() {
-		return static_cast<T1>(A * B);
+	// 小さい値を返すメンバ関数
+	auto MinValue() {
+		return (A < B) ? A : B;
 	}
 
 };
-
