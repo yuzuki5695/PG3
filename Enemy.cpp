@@ -7,19 +7,16 @@ void (Enemy::* Enemy::Table[])() = {
 };
 
 void Enemy::Update() {
-
 	(this->*Table[index])(); {
- // 数字を入力してフェーズを変更
-    int input;
-    printf("フェーズを変更してください (0:接近, 1:射撃, 2:離脱): ");
-    scanf_s("%d", &input);
+		// 数字を入力してフェーズを変更
+		int input;
+		printf("フェーズを変更\n");
+		scanf_s("%d", &input);
 
-    // 入力された数字に応じてフェーズを切り替える
-    if (input >= 0 && input <= 2) {
-        index = input;
-    } else {
-        printf("無効な入力です。0〜2の範囲で入力してください。\n");
-    }
+		// 入力された数字に応じてフェーズを切り替える
+		if (input >= 0 && input <= 2) {
+			index = input;
+		}
 	}
 
 }

@@ -11,10 +11,8 @@ public:
 	void Func1();
 	void Func2();
 	void Func3();
-
 	// メンバ関数ポインタのテーブル
 	static void (Enemy::* Table[])();
-
 private:
 	// テーブル参照インデックス
 	int index = 0;
