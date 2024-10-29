@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animal.cpp" />
+    <ClCompile Include="Cat.cpp" />
     <ClCompile Include="Dog.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
