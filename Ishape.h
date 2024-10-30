@@ -1,21 +1,9 @@
 #pragma once
-#include<stdio.h>
 
+// 形の純粋仮想関数クラス
 class Ishape
 {
-public:
-
-	// 自作メンバ関数
-	void Update();
-
-	void Func1();
-	void Func2();
-	void Func3();
-	// メンバ関数ポインタのテーブル
-	static void (Ishape::* Table[])();
-private:
-	// テーブル参照インデックス
-	int index = 0;
-	// メンバ関数ポインタ
-	void (Ishape::* pFunc)();
+public: /* メンバ関数 */
+	virtual void size() = 0;
+	virtual void Draw() = 0;
 };
