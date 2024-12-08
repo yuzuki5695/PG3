@@ -9,21 +9,16 @@ void measureCopyAndMove() {
     std::string b; // コピー先
     std::string c; // ムーブ先
 
-    // コピーの時間を計測
     auto startCopy = std::chrono::high_resolution_clock::now();
-    b = a; // コピー
+    b = a;
     auto endCopy = std::chrono::high_resolution_clock::now();
-
-    // ムーブの時間を計測
     auto startMove = std::chrono::high_resolution_clock::now();
-    c = std::move(a); // ムーブ
+    c = std::move(a);
     auto endMove = std::chrono::high_resolution_clock::now();
 
-    // 結果を計測
     auto copyDuration = std::chrono::duration_cast<std::chrono::microseconds>(endCopy - startCopy).count();
     auto moveDuration = std::chrono::duration_cast<std::chrono::microseconds>(endMove - startMove).count();
 
-    // 結果を表示 (単位: us)
     printf_s("コピー : %lld us\n", copyDuration);
     printf_s("移動 : %lld us\n", moveDuration);
     //// doubleに変換して表示
